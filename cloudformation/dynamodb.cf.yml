@@ -28,3 +28,17 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
+
+  ThisWeekGarbageCharge:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "this-week-garbage-gharge"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "House"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
