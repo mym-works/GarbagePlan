@@ -15,4 +15,4 @@ def member_read():
         KeyConditionExpression=Key('house').eq("oimachi")
     )
     for row in res['Items']:
-        logger.info(row)
+        logger.info(row["name"] + " " + row["room"])
