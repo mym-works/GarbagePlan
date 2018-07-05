@@ -14,3 +14,17 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
+
+  TypesOfGarbage:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "type-of-garbage"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "House"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
