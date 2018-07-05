@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  BorderlessHouseMemeber:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "borderless-house-test"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "House"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
