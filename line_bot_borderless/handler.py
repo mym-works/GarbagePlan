@@ -1,9 +1,11 @@
 import urllib.request
 import json
 import os
+import database
 
 
 def line_bot_response(event, context):
+    # database.member_read()
     post_to_line()
 
 
@@ -20,8 +22,8 @@ def post_to_line():
     obj = {
         'to': group_id,
         'messages': [{
-            'type': 'text',
-            'text': "Hello World",
+            'type': 'video',
+            'text': "./garbage_day.mp4",
         }],
     }
     json_data = json.dumps(obj).encode("utf-8")
