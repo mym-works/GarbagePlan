@@ -11,7 +11,8 @@ house_member_table = dynamodb.Table("oimachi-house-members")
 
 def main():
     update()
-    confirm()
+    scan()
+    # query()
 
 
 def update():
@@ -38,7 +39,12 @@ def update():
             )
 
 
-def confirm():
+def scan():
+    res = house_member_table.scan()
+    print(res)
+
+
+def query():
     res = house_member_table.query(
         KeyConditionExpression=Key('Room').eq("1A")
     )
