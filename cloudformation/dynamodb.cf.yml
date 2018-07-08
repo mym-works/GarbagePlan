@@ -32,7 +32,7 @@ Resources:
   ThisWeekGarbageCharge:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "oimachi-this-week-garbage-gharge"
+      TableName: "oimachi-this-week-garbage-charge"
       AttributeDefinitions:
         - AttributeName: "Room"
           AttributeType: "S"
