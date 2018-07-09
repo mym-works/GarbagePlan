@@ -39,7 +39,7 @@ Resources:
       TableName: "oimachi-this-week-garbage-charge"
       AttributeDefinitions:
         - AttributeName: "House"
-          KeyType: "HASH"
+          AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
       KeySchema: 
