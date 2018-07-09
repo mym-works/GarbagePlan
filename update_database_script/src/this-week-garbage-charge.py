@@ -6,7 +6,7 @@ from boto3.dynamodb.conditions import Key, Attr
 dynamodb_session = Session(profile_name="mayama-cli",
                            region_name="ap-northeast-1")
 dynamodb = dynamodb_session.resource('dynamodb')
-house_member_table = dynamodb.Table("oimachi-this-week-garbage-charge")
+house_member_table = dynamodb.Table("borderles-this-week-garbage-charge")
 
 
 def main():
