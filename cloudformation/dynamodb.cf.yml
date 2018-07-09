@@ -4,13 +4,17 @@ Resources:
   BorderlessHouseMemeber:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "oimachi-house-members"
+      TableName: "borderless-house-members"
       AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
       KeySchema:
-        - AttributeName: "Room"
+        - AttributeName: "House"
           KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
@@ -18,7 +22,7 @@ Resources:
   TypesOfGarbage:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "oimachi-type-of-garbage"
+      TableName: "borderless-type-of-garbage"
       AttributeDefinitions:
         - AttributeName: "GarbageType"
           AttributeType: "S"

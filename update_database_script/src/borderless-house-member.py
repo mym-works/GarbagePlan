@@ -6,7 +6,7 @@ from boto3.dynamodb.conditions import Key, Attr
 dynamodb_session = Session(profile_name="mayama-cli",
                            region_name="ap-northeast-1")
 dynamodb = dynamodb_session.resource('dynamodb')
-house_member_table = dynamodb.Table("oimachi-house-members")
+house_member_table = dynamodb.Table("borderless-house-members")
 
 
 def main():
@@ -19,19 +19,21 @@ def update():
     file = open("../conf/borderless-house-member.csv", "r")
     groupIds = []
     rooms = []
+    house_name = []
     names = []
     for line in file:
         items = line.split(",")
         groupIds.append(items[0])
         rooms.append(items[1])
-        names.append(items[3])
+        house_name.append(items[2])
+        names.append(items[4])
     file.close()
 
     with house_member_table.batch_writer() as batch:
         for count in range(20):
-            rooms[count]
             batch.put_item(
                 Item={
+                    'House': house_name[count],
                     'Room': rooms[count],
                     'Name': names[count],
                     'GroupId': groupIds[count]
