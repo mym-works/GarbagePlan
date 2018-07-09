@@ -38,11 +38,15 @@ Resources:
     Properties:
       TableName: "oimachi-this-week-garbage-charge"
       AttributeDefinitions:
+        - AttributeName: "House"
+          KeyType: "HASH"
         - AttributeName: "Room"
           AttributeType: "S"
       KeySchema: 
-        - AttributeName: "Room"
+        - AttributeName: "House"
           KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
