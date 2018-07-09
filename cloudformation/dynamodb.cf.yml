@@ -24,11 +24,15 @@ Resources:
     Properties:
       TableName: "borderless-type-of-garbage"
       AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
         - AttributeName: "GarbageType"
           AttributeType: "S"
       KeySchema: 
-        - AttributeName: "GarbageType"
+        - AttributeName: "House"
           KeyType: "HASH"
+        - AttributeName: "GarbageType"
+          KeyType: "RANGE"
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
@@ -36,7 +40,7 @@ Resources:
   ThisWeekGarbageCharge:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "oimachi-this-week-garbage-charge"
+      TableName: "borderles-this-week-garbage-charge"
       AttributeDefinitions:
         - AttributeName: "House"
           AttributeType: "S"
