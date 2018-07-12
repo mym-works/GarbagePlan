@@ -6,7 +6,7 @@ from boto3.dynamodb.conditions import Key, Attr
 dynamodb_session = Session(profile_name="mayama-cli",
                            region_name="ap-northeast-1")
 dynamodb = dynamodb_session.resource('dynamodb')
-house_member_table = dynamodb.Table("borderless-type-of-garbage")
+type_garbage_table = dynamodb.Table("borderless-type-of-garbage")
 
 # ハウスの名前を入れる
 house_name = "Oimachi"
@@ -28,11 +28,9 @@ def update():
         day.append(items[1].rstrip())
 
     file.close()
-    print(garbage_type)
-    print(day)
 
     for count in range(0, len(garbage_type) - 1):
-        with house_member_table.batch_writer() as batch:
+        with type_garbage_table.batch_writer() as batch:
             batch.put_item(
                 Item={
                     'House': house_name,
@@ -43,7 +41,7 @@ def update():
 
 
 def scan():
-    res = house_member_table.scan()
+    res = type_garbage_table.scan()
     print(res)
 
 
