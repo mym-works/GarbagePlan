@@ -8,9 +8,6 @@ dynamodb_session = Session(profile_name="mayama-cli",
 dynamodb = dynamodb_session.resource('dynamodb')
 type_garbage_table = dynamodb.Table("borderless-type-of-garbage")
 
-# ハウスの名前を入れる
-house_name = "Oimachi"
-
 
 def main():
     update()
@@ -20,22 +17,29 @@ def main():
 def update():
     file = open("../conf/type-of-garbage.csv", "r")
 
-    garbage_type = []
-    day = []
+    # ハウス名を入力
+    house_name = "Oimachi"
+
+    garbage_type_day = {}
     for line in file:
+        line = line.rstrip()
         items = line.split(",")
-        garbage_type.append(items[0])
-        day.append(items[1].rstrip())
+        garbage_type = items[0]
+
+        days = items
+        del days[0:1]
+
+        garbage_type_day[garbage_type] = days
 
     file.close()
 
-    for count in range(0, len(garbage_type) - 1):
+    for key, value in garbage_type_day.items():
         with type_garbage_table.batch_writer() as batch:
             batch.put_item(
                 Item={
                     'House': house_name,
-                    'GarbageType': garbage_type[count],
-                    'Day': day[count]
+                    'GarbageType': key,
+                    'Day': value
                 }
             )
 
