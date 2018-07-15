@@ -9,13 +9,15 @@ logger.setLevel(logging.INFO)
 
 
 def line_bot_response(event, context):
-    response = database.member_read()
-    room_member = response["Items"]
+    room_member = database.items_read('borderless-house-members')
     logger.info(room_member)
 
-    response = database.this_week_charger()
-    this_week_charger = response["Items"]
+    this_week_charger = database.items_read(
+        'borderles-this-week-garbage-charge')
     logger.info(this_week_charger)
+
+    type_of_garbage = database.items_read('borderless-type-of-garbage')
+    logger.info(type_of_garbage)
 
     # post_to_line()
 
