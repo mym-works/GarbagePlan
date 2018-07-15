@@ -2,11 +2,22 @@ import urllib.request
 import json
 import os
 import database
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 
 def line_bot_response(event, context):
-    # database.member_read()
-    post_to_line()
+    response = database.member_read()
+    room_member = response["Items"]
+    logger.info(room_member)
+
+    response = database.this_week_charger()
+    this_week_charger = response["Items"]
+    logger.info(this_week_charger)
+
+    # post_to_line()
 
 
 def post_to_line():
@@ -22,8 +33,8 @@ def post_to_line():
     obj = {
         'to': group_id,
         'messages': [{
-            'type': 'video',
-            'text': "./garbage_day.mp4",
+            'type': 'text',
+            'text': "こんにちは",
         }],
     }
     json_data = json.dumps(obj).encode("utf-8")
