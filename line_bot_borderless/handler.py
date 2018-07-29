@@ -21,7 +21,8 @@ def line_bot_response(event, context):
     logger.info(type_of_garbage)
 
     # 今週のゴミ当番がいるか確認
-    names, rooms = calc.confirm_charge(room_members, this_week_charger)
+    database_charge_room_array, correc_room, correc_name, next_room, next_name = calc.confirm_charge(
+        room_members, this_week_charger)
 
     # ゴミの種類を取得
     todays_garbage_name = calc.confirm_garbage_type(type_of_garbage)
@@ -30,9 +31,17 @@ def line_bot_response(event, context):
     if todays_garbage_name:
         # メッセージを整形
         send_message = calc.make_garbage_massege(
-            names, rooms, todays_garbage_name)
+            correc_name, correc_room, todays_garbage_name)
         # メッセージをLINEに送信
         post_to_line(send_message)
+
+        # 一旦今週のごみ捨て当番のレコードを削除する
+        database.items_delete(
+            'borderles-this-week-garbage-charge', database_charge_room_array)
+
+        # 来週のごみ捨て当番のレコードを登録する
+        database.items_add('borderles-this-week-garbage-charge',
+                           'C5ac0fe9390c99fe1e7aa307168695d04', next_room, next_name)
 
 
 def post_to_line(send_message):
