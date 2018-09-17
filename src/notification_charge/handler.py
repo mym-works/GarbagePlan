@@ -9,7 +9,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-def line_bot_response(event, context):
+def notification_charge(event, context):
     room_members = database.items_read('borderless-house-members')
     logger.info(room_members)
 

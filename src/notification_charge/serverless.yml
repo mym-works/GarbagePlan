@@ -1,4 +1,4 @@
-service: line-bot-borderless
+service: GarbagePlan
 
 provider:
   name: aws
@@ -20,8 +20,8 @@ provider:
   region: ap-northeast-1
 
 functions:
-  line_bot_response:
-    handler: handler.line_bot_response
+  notification_charge:
+    handler: handler.notification_charge
     events:
       #UTCでかくこと
       - schedule: cron(00 13 ? * MON *)
