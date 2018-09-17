@@ -1,4 +1,4 @@
-# Garbage_plan
+# GarbagePlan
 We are lazy that announcement to our member about garbage duty 😩
 
 🗑 This program is automation notification of Today's garbage duty 🗑
