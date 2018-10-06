@@ -54,3 +54,39 @@ Resources:
       ProvisionedThroughput: 
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
+
+  BorderlessMovein:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "borderless-house-move-in"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+        - AttributeName: "Room"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "House"
+          KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+
+  BorderlessMoveout:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "borderless-house-move-out"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+        - AttributeName: "Room"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "House"
+          KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
