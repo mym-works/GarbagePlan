@@ -1,0 +1,19 @@
+service: GarbagePlan
+
+provider:
+  name: aws
+  runtime: python3.6
+
+  # you can overwrite defaults here
+  stage: prd
+  region: ap-northeast-1
+
+functions:
+  notification-collect-money:
+    handler: main.notification
+    environment:
+      ACCESS_TOKEN: ${file(./api_key.yml):ACCESS_TOKEN}
+      GROUP_ID: ${file(./api_key.yml):GROUP_ID}
+    events:
+      #UTCでかくこと
+      - schedule: cron(0 12 1 * ? *)
