@@ -8,7 +8,7 @@ logger.setLevel(logging.INFO)
 
 
 def notification(event, context):
-    send_message = "Could you pay to Common fee for 500 yen?"
+    send_message = "Reminder: could you please pay common fee of the current month\n(¥500)"
 
     access_token = os.environ['ACCESS_TOKEN']
     group_id = os.environ['GROUP_ID']
