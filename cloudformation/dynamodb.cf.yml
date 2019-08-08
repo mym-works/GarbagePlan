@@ -15,7 +15,7 @@ Resources:
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
@@ -28,12 +28,12 @@ Resources:
           AttributeType: "S"
         - AttributeName: "GarbageType"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "GarbageType"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
@@ -46,12 +46,30 @@ Resources:
           AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+
+  ThisWeekGarbageChargeSlack:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "borderles-this-week-garbage-charge-slack"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+        - AttributeName: "Room"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "House"
+          KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
@@ -64,12 +82,12 @@ Resources:
           AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
@@ -82,11 +100,11 @@ Resources:
           AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
