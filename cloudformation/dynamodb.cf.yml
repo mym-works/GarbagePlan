@@ -1,10 +1,18 @@
 AWSTemplateFormatVersion: 2010-09-09
 
+Parameters:
+  Environment:
+    Type: String
+    Default: "dev"
+    AllowedValues:
+      - "dev"
+      - "prd"
+
 Resources:
-  BorderlessHouseMemeber:
+  HouseMemeber:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "borderless-house-members"
+      TableName: !Sub "house-members-${Environment}"
       AttributeDefinitions:
         - AttributeName: "House"
           AttributeType: "S"
@@ -15,78 +23,78 @@ Resources:
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
-  TypesOfGarbage:
+  ListOfDay:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "borderless-type-of-garbage"
+      TableName: !Sub "list-of-day-${Environment}"
       AttributeDefinitions:
         - AttributeName: "House"
           AttributeType: "S"
-        - AttributeName: "GarbageType"
+        - AttributeName: "Type"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
-        - AttributeName: "GarbageType"
+        - AttributeName: "Type"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
-  ThisWeekGarbageCharge:
+  ThisWeekCharge:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "borderles-this-week-garbage-charge"
-      AttributeDefinitions:
-        - AttributeName: "House"
-          AttributeType: "S"
-        - AttributeName: "Room"
-          AttributeType: "S"
-      KeySchema: 
-        - AttributeName: "House"
-          KeyType: "HASH"
-        - AttributeName: "Room"
-          KeyType: "RANGE"
-      ProvisionedThroughput: 
-        ReadCapacityUnits: "5"
-        WriteCapacityUnits: "5"
-
-  BorderlessMovein:
-    Type: "AWS::DynamoDB::Table"
-    Properties:
-      TableName: "borderless-house-move-in"
+      TableName: !Sub "this-week-charge-${Environment}"
       AttributeDefinitions:
         - AttributeName: "House"
           AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
 
-  BorderlessMoveout:
+  HouseMovein:
     Type: "AWS::DynamoDB::Table"
     Properties:
-      TableName: "borderless-house-move-out"
+      TableName: !Sub "house-move-in-${Environment}"
       AttributeDefinitions:
         - AttributeName: "House"
           AttributeType: "S"
         - AttributeName: "Room"
           AttributeType: "S"
-      KeySchema: 
+      KeySchema:
         - AttributeName: "House"
           KeyType: "HASH"
         - AttributeName: "Room"
           KeyType: "RANGE"
-      ProvisionedThroughput: 
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+
+  HouseMoveout:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: !Sub "house-move-out-${Environment}"
+      AttributeDefinitions:
+        - AttributeName: "House"
+          AttributeType: "S"
+        - AttributeName: "Room"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "House"
+          KeyType: "HASH"
+        - AttributeName: "Room"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
