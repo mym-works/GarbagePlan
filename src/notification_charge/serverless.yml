@@ -2,12 +2,12 @@ service: GarbagePlan
 
 provider:
   name: aws
-  runtime: python3.6
+  runtime: python3.8
 
   iamRoleStatements:
-    - Effect: "Allow"
-      Resource: "arn:aws:dynamodb:ap-northeast-1:*:*"
-      Action: 
+    - Effect: 'Allow'
+      Resource: 'arn:aws:dynamodb:ap-northeast-1:*:*'
+      Action:
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
@@ -15,15 +15,15 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
 
-# you can overwrite defaults here
+  # you can overwrite defaults here
   stage: api
   region: ap-northeast-1
 
 functions:
   notification_charge:
-    handler: handler.notification_charge
+    handler: handler.main
     events:
       #UTCでかくこと
-      - schedule: cron(00 13 ? * MON *)
-      - schedule: cron(00 13 ? * TUE *)
-      - schedule: cron(00 13 ? * THU *)
+      - schedule: cron(00 12 ? * MON *)
+      - schedule: cron(00 12 ? * TUE *)
+      - schedule: cron(00 12 ? * THU *)
