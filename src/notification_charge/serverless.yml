@@ -6,7 +6,12 @@ provider:
 
   iamRoleStatements:
     - Effect: 'Allow'
-      Resource: 'arn:aws:dynamodb:ap-northeast-1:*:*'
+      Resource:
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderles-line-groupid'
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderles-people-in-charge'
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-move-in'
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-move-out'
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-type-of-garbage'
       Action:
         - dynamodb:Query
         - dynamodb:Scan
@@ -16,8 +21,10 @@ provider:
         - dynamodb:DeleteItem
 
   # you can overwrite defaults here
-  stage: api
+  stage: prd
   region: ap-northeast-1
+  environment:
+    ACCESS_TOKEN: ${file(./conf/lambda-setting.yml):ACCESS_TOKEN}
 
 functions:
   notification_charge:
