@@ -61,17 +61,6 @@ def main(event, context):
                 line_groupid, todays_garbage_name)
             post.line(send_message)
 
-
-"""
-
-    # ゴミの種類の配列が空ではない場合
-    if todays_garbage_name:
-
-        # 一旦今週のごみ捨て当番のレコードを削除する
-        database.items_delete(
-            'borderles-this-week-garbage-charge', database_charge_room_array)
-
-        # 来週のごみ捨て当番のレコードを登録する
-        database.items_add('borderles-this-week-garbage-charge',
-                           'C5ac0fe9390c99fe1e7aa307168695d04', next_room, next_name)
-"""
+            # ごみ捨て当番のQueueをDynamoDBへ更新
+            database.items_update(
+                'borderles-people-in-charge', house_name, new_people_in_charge_queue)
