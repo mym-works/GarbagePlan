@@ -8,9 +8,8 @@ provider:
     - Effect: 'Allow'
       Resource:
         - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderles-line-groupid'
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-members'
         - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderles-people-in-charge'
-        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-move-in'
-        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-move-out'
         - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-type-of-garbage'
       Action:
         - dynamodb:Query
@@ -26,8 +25,11 @@ provider:
   environment:
     ACCESS_TOKEN: ${file(./conf/lambda-setting.yml):ACCESS_TOKEN}
 
+plugins:
+  - serverless-python-requirements
+
 functions:
-  notification_charge:
+  notification-charge:
     handler: handler.main
     events:
       #UTCでかくこと
