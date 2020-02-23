@@ -3,37 +3,36 @@ import json
 from boto3.dynamodb.conditions import Key, Attr
 import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 dynamodb = boto3.resource('dynamodb')
 
 
-def items_read(table_name):
+def items_scan(table_name):
+    dynamodb_table = dynamodb.Table(table_name)
+    response = dynamodb_table.scan()
+    return response['Items']
+
+
+def items_read(table_name, house_name):
     dynamodb_table = dynamodb.Table(table_name)
     response = dynamodb_table.query(
-        KeyConditionExpression=Key('House').eq("Oimachi")
+        KeyConditionExpression=Key('House').eq(house_name)
     )
     return response["Items"]
 
 
-def items_delete(table_name, database_charge_room_array):
+def items_update(table_name, house_name, new_people_in_charge_queue):
     dynamodb_table = dynamodb.Table(table_name)
-    print(database_charge_room_array)
-    for database_charge in database_charge_room_array:
-        dynamodb_table.delete_item(
-            Key={
-                "House": "Oimachi",
-                "Room": database_charge
-            }
-        )
-
-
-def items_add(table_name, group_id, next_room, next_name):
-    dynamodb_table = dynamodb.Table(table_name)
-    for room_num, room_name in zip(next_room, next_name):
-        dynamodb_table.put_item(
-            Item={
-                "House": "Oimachi",
-                "Room": room_num,
-                "GroupId": group_id,
-                "Name": room_name
-            }
-        )
+    response = dynamodb_table.update_item(
+        Key={
+            'House': house_name
+        },
+        UpdateExpression='set Room = :r',
+        ExpressionAttributeValues={
+            ':r': new_people_in_charge_queue
+        },
+        ReturnValues='UPDATED_NEW'
+    )
+    logger.info(response)
