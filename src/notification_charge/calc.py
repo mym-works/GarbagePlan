@@ -50,7 +50,6 @@ def get_todays_garbage_type(type_of_garbage):
         for day in garbage_day["Day"]:
             if todays_day == day:
                 todays_garbage_name.append(garbage_day)
-    logger.info(todays_day)
 
     return todays_garbage_name
 
