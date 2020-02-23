@@ -23,4 +23,4 @@ def line(send_message):
         data=json_data,
         headers=headers
     )
-    logger.info(response.json())
+    logger.info('Request: ' + str(response.json()))
