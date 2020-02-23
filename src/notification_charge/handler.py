@@ -22,7 +22,6 @@ def main(event, context):
         # House memeberを取得
         house_info = database.items_read(
             'borderless-house-members', house_name)
-        # logger.info(house_info)
 
         # ごみ捨て当番を取得
         # 配列の最初の二人が担当
@@ -30,7 +29,6 @@ def main(event, context):
         people_in_charge = database.items_read(
             'borderles-people-in-charge', house_name)
         people_in_charge_queue = people_in_charge[0]['Room']
-        # logger.info(people_in_charge_queue)
 
         # 当日のごみ捨て当番を探索
         todays_people_in_charge, new_people_in_charge_queue = calc.get_todays_people_in_charge(
