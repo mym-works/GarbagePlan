@@ -44,13 +44,9 @@ Resources:
       AttributeDefinitions:
         - AttributeName: 'House'
           AttributeType: 'S'
-        - AttributeName: 'Room'
-          AttributeType: 'S'
       KeySchema:
         - AttributeName: 'House'
           KeyType: 'HASH'
-        - AttributeName: 'Room'
-          KeyType: 'RANGE'
       ProvisionedThroughput:
         ReadCapacityUnits: '1'
         WriteCapacityUnits: '1'
