@@ -6,10 +6,16 @@ import logging
 dynamodb = boto3.resource('dynamodb')
 
 
-def items_read(table_name):
+def items_scan(table_name):
+    dynamodb_table = dynamodb.Table(table_name)
+    response = dynamodb_table.scan()
+    return response['Items']
+
+
+def items_read(table_name, house_name):
     dynamodb_table = dynamodb.Table(table_name)
     response = dynamodb_table.query(
-        KeyConditionExpression=Key('House').eq("Oimachi")
+        KeyConditionExpression=Key('House').eq(house_name)
     )
     return response["Items"]
 
