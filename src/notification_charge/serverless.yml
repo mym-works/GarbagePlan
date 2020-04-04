@@ -3,6 +3,7 @@ service: GarbagePlan
 provider:
   name: aws
   runtime: python3.8
+  memorySize: 128
 
   iamRoleStatements:
     - Effect: 'Allow'
