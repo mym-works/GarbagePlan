@@ -6,7 +6,7 @@ plugins:
 custom:
   customDomain:
     domainName: borderless.mym.works
-    basePath: ''
+    basePath: 'api'
     stage: ${self:provider.stage}
 
 provider:
@@ -31,5 +31,6 @@ functions:
     handler: handler.main
     events:
       - http:
-          path: api/{house_name}
+          path: /{house_name}
           method: get
+          private: true
