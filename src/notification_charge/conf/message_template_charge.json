@@ -1,0 +1,142 @@
+{
+  "to": "",
+  "messages": [
+    {
+      "type": "flex",
+      "altText": "【Garbage Plan】",
+      "contents": {
+        "type": "carousel",
+        "contents": [
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "",
+                      "weight": "bold",
+                      "color": "#db7666",
+                      "size": "sm"
+                    }
+                  ],
+                  "spacing": "md",
+                  "paddingAll": "10px"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "Today’s person(s) in charge",
+                      "weight": "bold",
+                      "size": "lg",
+                      "margin": "md",
+                      "align": "center"
+                    }
+                  ],
+                  "paddingBottom": "10px"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "paddingTop": "10px",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "",
+                              "size": "md",
+                              "color": "#bcbcbc",
+                              "align": "center"
+                            }
+                          ],
+                          "spacing": "md",
+                          "margin": "md"
+                        },
+                        {
+                          "type": "text",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "",
+                              "weight": "bold",
+                              "color": "#000000"
+                            }
+                          ],
+                          "size": "xl",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ]
+                    }
+                  ],
+                  "spacing": "xl",
+                  "paddingAll": "5px"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "paddingTop": "10px",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "",
+                              "size": "md",
+                              "color": "#bcbcbc",
+                              "align": "center"
+                            }
+                          ],
+                          "spacing": "md",
+                          "margin": "md"
+                        },
+                        {
+                          "type": "text",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "",
+                              "weight": "bold",
+                              "color": "#000000"
+                            }
+                          ],
+                          "size": "xl",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ]
+                    }
+                  ],
+                  "spacing": "xl",
+                  "paddingAll": "5px"
+                }
+              ],
+              "paddingAll": "0px"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

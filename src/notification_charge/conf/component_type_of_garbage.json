@@ -1,0 +1,49 @@
+{
+  "type": "bubble",
+  "size": "micro",
+  "hero": {
+    "type": "image",
+    "url": "https://borderless.s3-ap-northeast-1.amazonaws.com/type-of-garbage/combustible.jpg",
+    "size": "full",
+    "aspectMode": "cover",
+    "aspectRatio": "320:213"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "もえるゴミ",
+                "align": "center",
+                "wrap": true,
+                "color": "#8c8c8c",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "",
+        "weight": "bold",
+        "size": "md",
+        "wrap": true,
+        "align": "center"
+      }
+    ],
+    "spacing": "sm",
+    "paddingAll": "13px"
+  }
+}
