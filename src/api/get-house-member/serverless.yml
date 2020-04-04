@@ -1,0 +1,35 @@
+service: get-house-member
+
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: borderless.mym.works
+    basePath: ''
+    stage: ${self:provider.stage}
+
+provider:
+  name: aws
+  runtime: python3.8
+
+  stage: prd
+  region: ap-northeast-1
+
+  memorySize: 128
+
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Resource:
+        - 'arn:aws:dynamodb:ap-northeast-1:778289792916:table/borderless-house-members'
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+
+functions:
+  api:
+    handler: handler.main
+    events:
+      - http:
+          path: api/{house_name}
+          method: get
