@@ -22,7 +22,10 @@ def main(event, context):
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(house_member)
+        "headers": {
+            "content-type": "application/json"
+        },
+        "body": json.dumps(house_member, ensure_ascii=False)
     }
 
     return response
